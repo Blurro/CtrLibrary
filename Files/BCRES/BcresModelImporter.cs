@@ -137,19 +137,8 @@ namespace CtrLibrary.Bcres
                         }
                         bn.Translation = bone.Translation;
                         bn.Rotation = bone.RotationEuler;
-                        if (bone.Parent != null)
-                        {
-                            bn.Scale = new Vector3(
-                                bone.Scale.X * bone.Parent.Scale.X,
-                                bone.Scale.Y * bone.Parent.Scale.Y,
-                                bone.Scale.Z * bone.Parent.Scale.Z
-                            );
-                        }
-                        else
-                        {
-                            // If there's no parent, keep the original scale
-                            bn.Scale = bone.Scale;
-                        }
+                        bn.Scale = bone.Scale;
+
                         bn.UpdateTransformFlags();
                         bn.ParentIndex = -1;
                         skeleton.Bones.Add(bn);
@@ -224,15 +213,6 @@ namespace CtrLibrary.Bcres
                                     dataTransform[0],
                                     dataTransform[1],
                                     dataTransform[2]);
-
-                                    if (bone.Parent != null)
-                                    {
-                                        bone.Scale = new Vector3(
-                                            bone.Scale.X * bone.Parent.Scale.X,
-                                            bone.Scale.Y * bone.Parent.Scale.Y,
-                                            bone.Scale.Z * bone.Parent.Scale.Z
-                                        );
-                                    }
 
                                     bone.Rotation = new Vector3(
                                     dataTransform[3],
